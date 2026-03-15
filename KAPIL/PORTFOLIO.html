@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kappu Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+cursor:none;
+}
+
+body{
+font-family:Inter;
+background:#0b0b0b;
+color:#ddd;
+transition:0.4s;
+}
+
+/* LIGHT MODE */
+
+body.light{
+background:#f5f5f5;
+color:#111;
+}
+
+/* CURSOR */
+
+.cursor{
+width:15px;
+height:15px;
+border-radius:50%;
+background:white;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:999;
+}
+
+/* LAYOUT */
+
+.container{
+display:grid;
+grid-template-columns:220px 1fr;
+width:100%;
+min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+padding:50px 40px;
+border-right:1px solid #222;
+}
+
+.nav a{
+display:block;
+color:#aaa;
+text-decoration:none;
+margin-bottom:18px;
+letter-spacing:2px;
+font-size:14px;
+transition:0.3s;
+}
+
+.nav a:hover{
+color:white;
+transform:translateX(6px);
+}
+
+.social{
+margin-top:40px;
+}
+
+.social a{
+display:block;
+color:#777;
+margin-bottom:10px;
+font-size:13px;
+text-decoration:none;
+}
+
+/* MAIN */
+
+main{
+padding:80px 10%;
+width:100%;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+height:90vh;
+display:flex;
+align-items:center;
+overflow:hidden;
+}
+
+.hero-text h1{
+font-size:140px;
+font-weight:200;
+letter-spacing:4px;
+line-height:1;
+}
+
+.hero-text p{
+margin-top:10px;
+color:#888;
+}
+
+/* IMAGE OVERLAY */
+
+.hero-img{
+position:absolute;
+right:5%;
+bottom:0;
+height:95vh;
+pointer-events:none;
+transition:1s;
+}
+
+.hero-img:hover{
+transform:scale(1.05);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:100px;
+margin-bottom:120px;
+}
+
+.section-title{
+font-size:15px;
+letter-spacing:2px;
+margin-bottom:20px;
+color:#999;
+border-bottom:1px solid #333;
+padding-bottom:8px;
+}
+
+.text{
+color:#aaa;
+line-height:1.7;
+font-size:15px;
+}
+
+/* IMAGE BLOCK */
+
+.photo img{
+width:100%;
+transition:1s;
+}
+
+.photo img:hover{
+transform:scale(1.05);
+}
+
+/* SKILLS */
+
+.skill-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:70px;
+margin-top:40px;
+}
+
+.skill-group h4{
+margin-bottom:15px;
+font-weight:300;
+letter-spacing:1px;
+}
+
+.tag{
+display:inline-block;
+border:1px solid #333;
+padding:6px 12px;
+margin:6px;
+border-radius:20px;
+font-size:12px;
+color:#aaa;
+transition:0.3s;
+}
+
+.tag:hover{
+background:white;
+color:black;
+transform:translateY(-3px);
+}
+
+/* LINKS */
+
+.links{
+margin-top:120px;
+text-align:right;
+}
+
+.links a{
+display:block;
+color:#ccc;
+text-decoration:none;
+margin:12px 0;
+font-size:22px;
+transition:0.3s;
+}
+
+.links a:hover{
+transform:translateX(10px);
+}
+
+/* TOGGLE */
+
+.toggle{
+position:fixed;
+top:25px;
+right:25px;
+width:45px;
+height:24px;
+border:1px solid #888;
+border-radius:20px;
+cursor:pointer;
+}
+
+.toggle::after{
+content:"";
+position:absolute;
+width:18px;
+height:18px;
+background:white;
+top:2px;
+left:2px;
+border-radius:50%;
+transition:0.4s;
+}
+
+body.light .toggle::after{
+transform:translateX(21px);
+background:black;
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.sidebar{
+border-right:none;
+border-bottom:1px solid #222;
+}
+
+.hero-text h1{
+font-size:70px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.hero-img{
+height:60vh;
+right:-20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<div class="toggle"></div>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="nav">
+<a href="#">HOME</a>
+<a href="#">WORKS</a>
+<a href="#">GALLERY</a>
+</div>
+
+<div class="social">
+<a href="#">LinkedIn</a>
+<a href="#">GitHub</a>
+<a href="#">Instagram</a>
+<a href="#">Email</a>
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+<h1>KAPPU<br>DEVELOPER</h1>
+<p>Web Developer / Designer</p>
+</div>
+
+<img src="kappu.png" class="hero-img">
+
+</section>
+
+<!-- ABOUT -->
+
+<div class="grid reveal">
+
+<div>
+
+<div class="section-title">ABOUT ME</div>
+
+<p class="text">
+
+Information Science diploma student passionate about
+building real world software platforms and modern
+web experiences.
+
+</p>
+
+</div>
+
+<div class="photo">
+<img src="https://picsum.photos/700/400">
+</div>
+
+</div>
+
+<!-- MOTIVATION -->
+
+<div class="grid reveal">
+
+<div>
+
+<div class="section-title">MOTIVATION</div>
+
+<p class="text">
+
+I enjoy exploring creative development and building
+powerful interfaces that combine technology and design.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- SKILLS -->
+
+<div class="reveal">
+
+<div class="section-title">SKILLS</div>
+
+<div class="skill-grid">
+
+<div class="skill-group">
+
+<h4>FRONTEND</h4>
+
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JavaScript</span>
+<span class="tag">React</span>
+
+</div>
+
+<div class="skill-group">
+
+<h4>BACKEND</h4>
+
+<span class="tag">Python</span>
+<span class="tag">Django</span>
+<span class="tag">Node</span>
+<span class="tag">SQL</span>
+
+</div>
+
+<div class="skill-group">
+
+<h4>TOOLS</h4>
+
+<span class="tag">VS Code</span>
+<span class="tag">Git</span>
+<span class="tag">Linux</span>
+<span class="tag">Figma</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="links reveal">
+
+<a href="#">WORKS →</a>
+<a href="#">GALLERY →</a>
+
+</div>
+
+</main>
+
+</div>
+
+<script>
+
+/* CURSOR */
+
+const cursor=document.querySelector(".cursor")
+
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
+})
+
+/* LIGHT MODE */
+
+const toggle=document.querySelector(".toggle")
+
+toggle.onclick=()=>{
+document.body.classList.toggle("light")
+}
+
+/* SCROLL REVEAL */
+
+const reveals=document.querySelectorAll(".reveal")
+
+window.addEventListener("scroll",()=>{
+
+reveals.forEach(r=>{
+
+const top=r.getBoundingClientRect().top
+
+if(top<window.innerHeight-80){
+r.classList.add("active")
+}
+
+})
+
+})
+
+</script>
+
+</body>
+</html>
+```
